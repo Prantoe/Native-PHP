@@ -1,0 +1,50 @@
+<div class="page-header">
+    <h1>Admin</h1>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <form class="form-inline">
+            <input type="hidden" name="m" value="admin" />
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Pencarian. . ." name="q" value="<?= _get('q') ?>" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> Cari Data</button>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-primary" href="?m=admin_tambah"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-default" href="cetak.php?m=admin" target="_blank"><span class="glyphicon glyphicon-print"></span> Cetak</a>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Admin</th>
+                    <th>Admin</th>
+                    <th style="width:200px;">Aksi</th>
+                </tr>
+            </thead>
+            <?php
+            $q = esc_field(_get('q'));
+            $rows = $db->get_results("SELECT * FROM tb_admin 
+        WHERE id_admin LIKE '%$q%' OR nm_admin LIKE '%$q%' OR email LIKE '%$q%'
+        ORDER BY id_admin");
+            $no = 0;
+            foreach ($rows as $row) : ?>
+                <tr>
+                    <td><?= ++$no ?></td>
+                    <td><?= $row->nm_admin ?></td>
+                    <td><?= $row->email ?></td>
+                    <td class="nw">
+                        <a class="btn  btn-warning" href="?m=admin_ubah&ID=<?= $row->id_admin ?>"><span class="glyphicon glyphicon-edit"></span>Edit</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>

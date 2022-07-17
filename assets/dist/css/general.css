@@ -1,0 +1,32 @@
+
+.mtop{
+    margin-top: 10px;
+}
+.aw{
+    width: auto;
+}
+.page-header{
+    margin-top: 0;
+    padding-bottom: 0;
+}
+.page-header h1{
+    margin-top: 0;
+}
+.panel-footer .pagination{
+    margin: 0;
+}
+.oxa{
+    overflow-x: auto;
+}
+.nw{
+    white-space: nowrap;
+}
+
+.form-group {
+  padding: 10px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
